@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Netwerk monitor",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js"
   },
   "author": "",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mkdirp": "^1.0.4"
+  }
 }
