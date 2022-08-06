@@ -1,0 +1,11 @@
+{
+  "name": "netmonitor",
+  "version": "1.0.0",
+  "description": "Netwerk monitor",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "UNLICENSED"
+}
