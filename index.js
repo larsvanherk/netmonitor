@@ -1,12 +1,12 @@
-import { fileURLToPath } from 'url';
-import { resolve as resolvePath, dirname } from 'path';
-import { writeFileSync } from 'fs';
-import { resolve, setServers } from 'dns';
-import { spawn } from 'child_process';
+const { fileURLToPath } = require('url');
+const { resolve: resolvePath, dirname } = require('path');
+const { writeFileSync } = require('fs');
+const { resolve, setServers } = require('dns');
+const { spawn } = require('child_process');
 
-import mkdirp from 'mkdirp';
+const mkdirp = require('mkdirp');
 
-await mkdirp(resolvePath(dirname(fileURLToPath(import.meta.url)), 'output'));
+mkdirp(resolvePath(__dirname, 'output'));
 
 const results = {
   dnsLookup: {
@@ -75,7 +75,7 @@ const preformTraceroute = (domain) => {
 };
 
 async function main() {
-  await Promise.allSettled([
+  await Promise.all([
     resolveForNS('openDNS', ['208.67.222.222']),
     resolveForNS('cloudflare', ['1.1.1.1']),
     resolveForNS('google', ['8.8.8.8', '8.8.4.4']),
@@ -84,7 +84,7 @@ async function main() {
     preformTraceroute('google.com')
   ]);
 
-  writeFileSync(resolvePath(dirname(fileURLToPath(import.meta.url)), 'output/results.json'), JSON.stringify(results, null, 2));
+  writeFileSync(resolvePath(__dirname, 'output/results.json'), JSON.stringify(results, null, 2));
 
   await new Promise((resolve) => setTimeout(resolve, 50000));
 
@@ -92,4 +92,4 @@ async function main() {
 };
 
 // Initialize
-await main();
+main();
