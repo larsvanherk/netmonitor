@@ -86,7 +86,7 @@ async function main() {
 
   writeFileSync(resolvePath(__dirname, 'output/results.json'), JSON.stringify(results, null, 2));
 
-  await new Promise((resolve) => setTimeout(resolve, 50000));
+  await new Promise((resolve) => setTimeout(resolve, 600000));
 
   await main();
 };
